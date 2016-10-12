@@ -1,0 +1,52 @@
+﻿@model FinalProject.Models.RegisterEventModel
+
+
+
+
+
+@{
+    Layout = null;
+}
+<h2>RegisterEvent</h2>
+
+<html>
+<head>
+    <style>
+        img {
+            width: 75%;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>TheForm</title>
+</head>
+@{
+    ViewBag.Title = "RegisterEvent";
+}
+
+<body>
+    <img src=C:\Users\Administrator\Pictures\o.jpg alt="HTML5 Icon" style="width:128px;height:128px;">
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <p> Detroit Food Finder</p>
+
+        <p>Your Name: @Html.TextBoxFor(x => x.Name)</p>
+        <p>Your email: @Html.TextBoxFor(x => x.Email)</p>
+        <p>Your phone: @Html.TextBoxFor(x => x.Phone)</p>
+        <p>Date of Event: @Html.TextBoxFor(x => x.Date)</p>
+        <p>Time to pickup: @Html.TextBoxFor(x => x.Time)</p>
+        <p>
+            Would you like make public?
+            @Html.DropDownListFor(x => x.NeedAssist, new[]{
+       new SelectListItem() {Text = "Yes, I would like public", Value = bool.TrueString},
+       new SelectListItem() {Text = "No, I would not like public", Value = bool.FalseString } }, "")
+
+
+        </p>
+
+        <input type="submit" value="Submit Form Now" />
+    }
+</body> 
+
+            </html>
