@@ -7,13 +7,13 @@ namespace DFF.Models
 {
     public class FakeDatabase
     {
-        public RecieverDonor GetDonor()
+        public RecieverDoner GetDonor()
         {
-            return new RecieverDonor() { IsDoner = true, loginInfor = new Login() { Name = "CMoney", Email = "cMone@r.com" } };
+            return new RecieverDoner() { IsDoner = true, loginInfor = new Login() { Name = "CMoney", Email = "cMone@r.com" } };
         }
-        public RecieverDonor GetReciewver()
+        public RecieverDoner GetReciewver()
         {
-            return new RecieverDonor() { IsDoner = false, loginInfor = new Login() { Name = "D More food to give", Email = "adsfsdafr.com" } };
+            return new RecieverDoner() { IsDoner = false, loginInfor = new Login() { Name = "D More food to give", Email = "adsfsdafr.com" } };
         }
 
         public List<Donation> GetDonations()
