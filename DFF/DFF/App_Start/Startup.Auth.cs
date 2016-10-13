@@ -54,15 +54,16 @@ namespace DFF
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "190195124751820",
+               appSecret: "3045d779ada4fd62b18394374d3353b1");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "311720327099-q9jepe316t5np6du8gnfa0sb1o2mtoq4.apps.googleusercontent.com",
+                ClientSecret = "GRcGtF_AXa9N9FCgA3p4bjXC"
+            });
         }
     }
 }
