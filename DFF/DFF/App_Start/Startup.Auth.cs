@@ -54,9 +54,9 @@ namespace DFF
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: "190195124751820",
-               appSecret: "3045d779ada4fd62b18394374d3353b1");
+            //app.UseFacebookAuthentication(
+            //   appId: "190195124751820",
+            //   appSecret: "3045d779ada4fd62b18394374d3353b1");
 
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
