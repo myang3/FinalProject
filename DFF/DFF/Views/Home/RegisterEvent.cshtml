@@ -26,22 +26,22 @@
     @using (Html.BeginForm())
     {
         @Html.ValidationSummary()
-        <p> Detroit Food Finder</p>
 
-        <p>Your Name: @Html.TextBoxFor(x => x.Name)</p>
+        <p class="formnote">
+            <b>Detroit Food Finder</b>
+               </p>
+
+        <p>Your Name or Company: @Html.TextBoxFor(x => x.Name)</p>
         <p>Your email: @Html.TextBoxFor(x => x.Email)</p>
-        <p>Your phone: @Html.TextBoxFor(x => x.Phone)</p>
+        <p>Your Contact phone #: @Html.TextBoxFor(x => x.Phone)</p>
         <p>Date of Event: @Html.TextBoxFor(x => x.Date)</p>
-        <p>Time to pickup: @Html.TextBoxFor(x => x.Time)</p>
-        <p>
-            Would you like make public?
-            @Html.DropDownListFor(x => x.NeedAssist, new[]{
-       new SelectListItem() {Text = "Yes, I would like public", Value = bool.TrueString},
-       new SelectListItem() {Text = "No, I would not like public", Value = bool.FalseString } }, "")
+        <p>Time to pickup: @Html.TextBoxFor(x => x.Time)</p><br />
 
+        <p>
+        Type of Food you are Donating: @Html.TextBoxFor(x => x.TyofIDFood)
         </p>
 
-        <input type="submit" value="Submit Form Now" />
+                <input type="submit" value="Submit Form Now" />
     }
 </body>
 

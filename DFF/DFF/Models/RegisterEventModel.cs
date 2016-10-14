@@ -16,5 +16,6 @@ namespace DFF.Models
         public string Email { get; set; }
         public int Phone { get; set; }
         public bool? NeedAssist { get; set; }
+        public string TyofIDFood { get; set; }
     }
 }
