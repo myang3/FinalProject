@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DFFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DonationData">
+    <Key>
+      <PropertyRef Name="DonationID" />
+    </Key>
+    <Property Name="DonationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DonorID" Type="int" Nullable="false" />
+    <Property Name="FoodType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PickupTime" Type="datetime" Nullable="false" />
+    <Property Name="Picture" Type="image" />
+  </EntityType>
+  <EntityType Name="DonorData">
+    <Key>
+      <PropertyRef Name="DonorID" />
+    </Key>
+    <Property Name="DonorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MatchUp">
+    <Key>
+      <PropertyRef Name="MatchID" />
+    </Key>
+    <Property Name="MatchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DonationID" Type="int" Nullable="false" />
+    <Property Name="ReceiverID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReceiverData">
+    <Key>
+      <PropertyRef Name="ReceiverID" />
+    </Key>
+    <Property Name="ReceiverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DonationData_DonorData">
+    <End Role="DonorData" Type="Self.DonorData" Multiplicity="1" />
+    <End Role="DonationData" Type="Self.DonationData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonorData">
+        <PropertyRef Name="DonorID" />
+      </Principal>
+      <Dependent Role="DonationData">
+        <PropertyRef Name="DonorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MatchUp_DonationData">
+    <End Role="DonationData" Type="Self.DonationData" Multiplicity="1" />
+    <End Role="MatchUp" Type="Self.MatchUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonationData">
+        <PropertyRef Name="DonationID" />
+      </Principal>
+      <Dependent Role="MatchUp">
+        <PropertyRef Name="DonationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MatchUp_ReceiverData">
+    <End Role="ReceiverData" Type="Self.ReceiverData" Multiplicity="1" />
+    <End Role="MatchUp" Type="Self.MatchUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReceiverData">
+        <PropertyRef Name="ReceiverID" />
+      </Principal>
+      <Dependent Role="MatchUp">
+        <PropertyRef Name="ReceiverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DFFModelStoreContainer">
+    <EntitySet Name="DonationData" EntityType="Self.DonationData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonorData" EntityType="Self.DonorData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MatchUp" EntityType="Self.MatchUp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReceiverData" EntityType="Self.ReceiverData" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DonationData_DonorData" Association="Self.FK_DonationData_DonorData">
+      <End Role="DonorData" EntitySet="DonorData" />
+      <End Role="DonationData" EntitySet="DonationData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MatchUp_DonationData" Association="Self.FK_MatchUp_DonationData">
+      <End Role="DonationData" EntitySet="DonationData" />
+      <End Role="MatchUp" EntitySet="MatchUp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MatchUp_ReceiverData" Association="Self.FK_MatchUp_ReceiverData">
+      <End Role="ReceiverData" EntitySet="ReceiverData" />
+      <End Role="MatchUp" EntitySet="MatchUp" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

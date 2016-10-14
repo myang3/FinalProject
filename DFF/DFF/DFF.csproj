@@ -81,6 +81,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -197,17 +199,47 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DonationsController.cs" />
+    <Compile Include="Controllers\DonorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReceiversController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DFFDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DFFDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DFFDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DFFDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DFFDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DFFDataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Donation.cs" />
+    <Compile Include="Models\DonationData.cs">
+      <DependentUpon>DFFDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonorData.cs">
+      <DependentUpon>DFFDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FakeDatabase.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MatchUp.cs">
+      <DependentUpon>DFFDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReceiverData.cs">
+      <DependentUpon>DFFDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RecieverDonor.cs" />
     <Compile Include="Models\RegisterEventModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,12 +252,29 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\DFFDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DFFDataModel.edmx</DependentUpon>
+      <LastGenOutput>DFFDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DFFDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DFFDataModel.edmx</DependentUpon>
+      <LastGenOutput>DFFDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\DFFDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DFFDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DFFDataModel.edmx.diagram">
+      <DependentUpon>DFFDataModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -275,6 +324,21 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Home\RegisterEvent.cshtml" />
+    <Content Include="Views\Donations\Create.cshtml" />
+    <Content Include="Views\Donations\Delete.cshtml" />
+    <Content Include="Views\Donations\Details.cshtml" />
+    <Content Include="Views\Donations\Edit.cshtml" />
+    <Content Include="Views\Donations\Index.cshtml" />
+    <Content Include="Views\Donors\Create.cshtml" />
+    <Content Include="Views\Donors\Delete.cshtml" />
+    <Content Include="Views\Donors\Details.cshtml" />
+    <Content Include="Views\Donors\Edit.cshtml" />
+    <Content Include="Views\Donors\Index.cshtml" />
+    <Content Include="Views\Receivers\Create.cshtml" />
+    <Content Include="Views\Receivers\Delete.cshtml" />
+    <Content Include="Views\Receivers\Details.cshtml" />
+    <Content Include="Views\Receivers\Edit.cshtml" />
+    <Content Include="Views\Receivers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,6 +353,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
