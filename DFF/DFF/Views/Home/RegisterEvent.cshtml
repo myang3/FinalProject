@@ -34,10 +34,10 @@
         <p>Date of Event: @Html.TextBoxFor(x => x.Date)</p>
         <p>Time to pickup: @Html.TextBoxFor(x => x.Time)</p>
         <p>
-            Would you like make public?
+            Would you like your information to be public?
             @Html.DropDownListFor(x => x.NeedAssist, new[]{
-       new SelectListItem() {Text = "Yes, I would like public", Value = bool.TrueString},
-       new SelectListItem() {Text = "No, I would not like public", Value = bool.FalseString } }, "")
+       new SelectListItem() {Text = "Yes, make my information public.", Value = bool.TrueString},
+       new SelectListItem() {Text = "No, keep my information private.", Value = bool.FalseString } }, "")
 
         </p>
 
