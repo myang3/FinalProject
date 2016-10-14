@@ -12,7 +12,7 @@ namespace DFF.Controllers
 {
     public class ReceiversController : Controller
     {
-        private DFFEntities db = new DFFEntities();
+        private DFFEntities1 db = new DFFEntities1();
 
         // GET: Receivers
         public ActionResult Index()
