@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="DFFModel.DonationData" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DFFModel.DonorData" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DFFModel.MatchUp" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DFFModel.ReceiverData" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DFFModel.ReceiverData" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <AssociationConnector Association="DFFModel.FK_DonationData_DonorData" ManuallyRouted="false" />
         <AssociationConnector Association="DFFModel.FK_MatchUp_DonationData" ManuallyRouted="false" />
         <AssociationConnector Association="DFFModel.FK_MatchUp_ReceiverData" ManuallyRouted="false" />

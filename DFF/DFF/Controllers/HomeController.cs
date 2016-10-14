@@ -16,14 +16,15 @@ namespace DFF.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Our Overall Mission Statement";
+            
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "How You Can Reach Us";
 
             return View();
         }
