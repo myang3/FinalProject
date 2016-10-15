@@ -199,7 +199,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DonationsController.cs" />
+    <Compile Include="Controllers\DonationDatasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReceiversController.cs" />
@@ -262,6 +262,9 @@
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EntityDeploy Include="Models\DFFDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DFFDataModel.Designer.cs</LastGenOutput>
@@ -317,16 +320,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Home\RegisterEvent.cshtml" />
+    <Content Include="Views\DonationDatas\Create.cshtml" />
+    <Content Include="Views\DonationDatas\Delete.cshtml" />
+    <Content Include="Views\DonationDatas\Details.cshtml" />
+    <Content Include="Views\DonationDatas\Edit.cshtml" />
+    <Content Include="Views\DonationDatas\Index.cshtml" />
     <Content Include="Views\Receivers\Create.cshtml" />
     <Content Include="Views\Receivers\Delete.cshtml" />
     <Content Include="Views\Receivers\Details.cshtml" />
     <Content Include="Views\Receivers\Edit.cshtml" />
     <Content Include="Views\Receivers\Index.cshtml" />
-    <Content Include="Views\Donations\Create.cshtml" />
-    <Content Include="Views\Donations\Delete.cshtml" />
-    <Content Include="Views\Donations\Details.cshtml" />
-    <Content Include="Views\Donations\Edit.cshtml" />
-    <Content Include="Views\Donations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
