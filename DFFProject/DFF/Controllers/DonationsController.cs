@@ -10,7 +10,7 @@ using DFF.Models;
 
 namespace DFF.Controllers
 {
-    public class DonationDatasController : Controller
+    public class DonationsController : Controller
     {
         private DFFEntities1 db = new DFFEntities1();
 
