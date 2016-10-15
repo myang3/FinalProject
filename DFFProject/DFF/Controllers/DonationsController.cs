@@ -10,17 +10,17 @@ using DFF.Models;
 
 namespace DFF.Controllers
 {
-    public class DonationDatasController : Controller
+    public class DonationsController : Controller
     {
         private DFFEntities1 db = new DFFEntities1();
 
-        // GET: DonationDatas
+        // GET: Donations
         public ActionResult Index()
         {
             return View(db.DonationData.ToList());
         }
 
-        // GET: DonationDatas/Details/5
+        // GET: Donations/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace DFF.Controllers
             return View(donationData);
         }
 
-        // GET: DonationDatas/Create
+        // GET: Donations/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: DonationDatas/Create
+        // POST: Donations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace DFF.Controllers
             return View(donationData);
         }
 
-        // GET: DonationDatas/Edit/5
+        // GET: Donations/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace DFF.Controllers
             return View(donationData);
         }
 
-        // POST: DonationDatas/Edit/5
+        // POST: Donations/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace DFF.Controllers
             return View(donationData);
         }
 
-        // GET: DonationDatas/Delete/5
+        // GET: Donations/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace DFF.Controllers
             return View(donationData);
         }
 
-        // POST: DonationDatas/Delete/5
+        // POST: Donations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
