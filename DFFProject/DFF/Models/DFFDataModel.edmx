@@ -116,10 +116,8 @@
           <End Role="MatchUp" Type="Self.MatchUp" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DonationData">
-              <PropertyRef Name="DonationID" />
             </Principal>
             <Dependent Role="MatchUp">
-              <PropertyRef Name="DonationID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
