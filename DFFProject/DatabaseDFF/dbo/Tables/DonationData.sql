@@ -6,7 +6,7 @@
     [FoodType]   NVARCHAR (MAX) NOT NULL,
     [Location]   NVARCHAR (MAX) NOT NULL,
     [PickupDate] DATE           NOT NULL,
-    [PickupTime] NVARCHAR(7)       NOT NULL,
+    [PickupTime] TIME (7)       NOT NULL,
     CONSTRAINT [PK_Donation] PRIMARY KEY CLUSTERED ([DonationID] ASC)
 );
 
