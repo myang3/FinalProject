@@ -26,8 +26,8 @@ namespace DFF.Models
         public string Phone { get; set; }
         public string FoodType { get; set; }
         public string Location { get; set; }
-        public System.DateTime PickupDate { get; set; }
-        public System.TimeSpan PickupTime { get; set; }
+        public string PickupDate { get; set; }
+        public string PickupTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatchUp> MatchUp { get; set; }

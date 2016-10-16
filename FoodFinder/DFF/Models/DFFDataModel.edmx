@@ -87,8 +87,8 @@
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FoodType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PickupDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="PickupTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="PickupDate" Type="String" Nullable="true" />
+          <Property Name="PickupTime" Type="String" Nullable="true" />
           <NavigationProperty Name="MatchUp" Relationship="Self.FK_MatchUp_DonationData" FromRole="DonationData" ToRole="MatchUp" />
         </EntityType>
         <EntityType Name="MatchUp">
