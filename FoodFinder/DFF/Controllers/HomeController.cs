@@ -29,25 +29,8 @@ namespace DFF.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult RegisterEvent()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult RegisterEvent(RegisterEventModel form)
-        {
-            if (ModelState.IsValid)
-            {
-                return View();
-
-            }
-            else
-            {
-                return View();
-            }
-        }
+     
+        
         public ActionResult SelectedListing()
         {
             return View();
