@@ -1,2 +1,0 @@
-c:\users\mo\documents\visual studio 2015\Projects\YelpAPI\YelpAPI\bin\Debug\YelpAPI.exe.config
-c:\users\mo\documents\visual studio 2015\Projects\YelpAPI\YelpAPI\obj\Debug\YelpAPI.csprojResolveAssemblyReference.cache
