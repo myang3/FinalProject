@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>I'm a Giver!</h2>
+<h2 style="text-align:center; margin-top:25px; margin-bottom:10px">I'm a Giver!</h2>
 
 
 @using (Html.BeginForm())
@@ -12,169 +12,165 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h3 style="position:center;">Post A Donation</h3>
-        <p style="position:center;">
-            <img src=http://www.clipartkid.com/images/30/food-pantry-clipart-clipart-best-Vjjs1w-clipart.jpeg alt="HTML5 Icon" style="width:200px;height:245px;">
-        </p>
-        @*<hr />*@ @*thematic break, creates a horizontal line*@
+       
+
+        @*<hr /> thematic break, creates a horizontal line*@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+        @*<div class="container-fluid">*@
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                    <div class="row-fluid">
+                        <div class="col-md-7 col-md-offset-1">
+                            <h3 style="position:center;">Post A Donation</h3>
+                            <p style="position:center;">
+                                <img src=http://www.clipartkid.com/images/30/food-pantry-clipart-clipart-best-Vjjs1w-clipart.jpeg alt="HTML5 Icon" style="width:200px;height:245px;">
+                            </p>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FoodType, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.FoodType, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.FoodType, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PickupDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.PickupDate, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.PickupDate, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FoodType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.FoodType, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.FoodType, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PickupTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.PickupTime, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.PickupTime, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-8">
-                        <input type="submit" value="Confrim" class="btn btn-default" />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PickupDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.PickupDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PickupDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PickupTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.PickupTime, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PickupTime, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-8">
+                                    <input type="submit" value="Confrim" class="btn btn-default" />
+                                </div>
+                            </div>
+
+                            <div>
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        @*<div class="row">
-            <div class="span6"> column 1 </div>
-            <div class="span6"> column 2 </div>
-        </div>*@
-        @*<div class="col-md-6">
-            <div class="form-group">
-                    Church of The Messiah
-                    Website:  www.messiahhousing.org
-                    Email: jmoss@messiahousing.org
-                    Contact: Joan Moss
-                    231 E. Grand Blvd
-                    Detroit, Mi. 48207
-                    313-567-1158
-                </div>
-            </div>
-         </div>*@         
-                
+                    <div class="col-md-4">
+                        <h3>Contact a Food Bank</h3>
+                        <ul class="nav nav-list">    
+                            <li>
+                                <address>
+                                    Church of The Messiah<br />
+                                    Website: <a href="https://www.messiahhousing.org">www.messiahhousing.org</a><br />
+                                    Email: <a href="mailto:jmoss@messiahousing.org">jmoss@messiahousing.org</a><br />    
+                                    Contact: Joan Moss<br />
+                                    231 E. Grand Blvd<br />
+                                    Detroit, MI 48207<br />
+                                    313-567-1158
+                                 </address>         
+                            </li>
+                            <li>
+                                <address>
+                                    Cass Community Social Services<br />
+                                    Website: <a href=https://www.casscommunity.org>www.casscommunity.org</a><br />
+                                    Email: <a href="mailto:Rev.Fowler@casscommunity.org">Rev.Fowler@casscommunity.org</a><br />   
+                                    Contact: Rev. Faith Fowler<br />
+                                    11745 Rosa Parks Blvd.<br />
+                                    Detroit, MI 48206<br />
+                                    313-883-2277
+                                </address>
+                            </li>
+                            <li>
+                                <address>
+                                    Capuchin Soup Kitchen<br />
+                                    Website: <a href=https://www.cskdetroit.org>www.cskdetroit.org</a><br />
+                                    Email: <a href="mailto:rjohnson@cskdetroit.org">rjohnson@cskdetroit.org</a><br />
+                                    Contact: Rita Johnson<br />
+                                    1820 Mt. Elliot<br />
+                                    Detroit, MI 48207<br />
+                                    313-570-2100
+                                </address>
+                            </li>
+                            <li>
+                                <address>
+                                    Central United Methodist Church<br />
+                                    Website:www.centralumchurchdetroit.org<br />
+                                    Email: central.umc.communications@gmail.com<br />
+                                    23 E Adam Ave.<br />
+                                    Detroit, MI 48226<br />
+                                    313-965-5422
+                                </address>
+                            </li>
+                            <li>
+                                <address>
+                                    Wayne Center Food Pantry<br />
+                                    Website: www.waynecenter.org<br />
+                                    Email: Contactus@waynecenter.org<br />
+                                    7430 Second Ave<br />
+                                    Detroit, MI 48202<br />
+                                    313-871-2337
+                                </address>
+                            </li>
+                            <li>
+                                <address>
+                                    St. Charles Church<br />
+                                    Website: www.stcharlesdetroit.org<br />
+                                    Email: stcharlesborromeodetroit@yahoo.com<br />
+                                    1491 Baldwin St.<br />
+                                    Detroit, MI 48214<br />
+                                    313-331-0252
+                                </address>
+                            </li>
+                        </ul>
+                    </div>
+             </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                    @section Scripts {
+                        @Scripts.Render("~/bundles/jqueryval")
+                    }
 
 
-@*<div class="col-md-4">
-            Church of The Messiah
-            Website:  www.messiahhousing.org
-            Email: jmoss@messiahousing.org
-            Contact: Joan Moss
-            231 E. Grand Blvd
-            Detroit, Mi. 48207
-            313-567-1158
-        </div>
+                    @*
 
+                        <div class="col-md-4" style="font-weight:bold;">
 
-    <div class="col-md-4" style="font-weight:bold;">
-        <table>
-            <tr>
-                Church of The Messiah
-                Website:  www.messiahhousing.org
-                Email: jmoss@messiahousing.org
-                Contact: Joan Moss
-                231 E. Grand Blvd
-                Detroit, Mi. 48207
-                313-567-1158
-            </tr>
-            <tr>
-                Cass Community Social Services
-                Website: https://casscommunity.org
-                Email: Rev.Fowler@casscommunity.org
-                Contact: Rev. Faith Fowler
-                11745 Rosa Parks Blvd.
-                Detroit, Mi. 48206
-                313-883-2277
-            </tr>
-            <tr>
-                Capuchin Soup Kitchen
-                Website: www.cskdetroit.org
-                Email:  rjohnson@cskdetroit.org
-                Contact name- Rita Johnson
-                1820 Mt. Elliot
-                Detroit, Mi. 48207
-                313-570-2100
-            </tr>
-            <tr>
-                Central United Methodist Church
-                Website:www.centralumchurchdetroit.org
-                Email: central.umc.communications@gmail.com
-                23 E Adam Ave.
-                Detroit, Mi. 48226
-                313-965-5422
-            </tr>
-            <tr>
-                Wayne Center Food Pantry
-                Website: www.waynecenter.org
-                Email: Contactus@waynecenter.org
-                7430 Second Ave
-                Detroit, MI - 48202
-                313-871-2337
-            </tr>
-            <tr>
-                St. Charles Church
-                Website: www.stcharlesdetroit.org
-                Email: stcharlesborromeodetroit@yahoo.com
-                1491 Baldwin St.
-                Detroit, Mi. 48214
-                313-331-0252
-            </tr>
-        </table>
-    </div>*@
+                        </div>*@
