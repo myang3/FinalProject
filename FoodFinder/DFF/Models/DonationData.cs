@@ -23,7 +23,7 @@ namespace DFF.Models
     
         public int DonationID { get; set; }
 
-        [Required(ErrorMessage = "Please enter a phone number")]
+        [Required(ErrorMessage = "Please enter your name")]
         public string Name { get; set; }
 
         [Required, RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
