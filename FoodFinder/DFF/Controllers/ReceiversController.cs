@@ -49,6 +49,7 @@ namespace DFF.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ReceiverID,Name,Email,Phone")] ReceiverData receiverData, int donationId)
         {
+            
             if (ModelState.IsValid)
             {
                 db.ReceiverData.Add(receiverData);
