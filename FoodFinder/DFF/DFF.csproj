@@ -332,6 +332,8 @@
     <Content Include="Views\Receivers\Details.cshtml" />
     <Content Include="Views\Receivers\Edit.cshtml" />
     <Content Include="Views\Receivers\Index.cshtml" />
+    <Content Include="Views\Receivers\RequestSuccess.cshtml" />
+    <Content Include="Views\Donations\DonationSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

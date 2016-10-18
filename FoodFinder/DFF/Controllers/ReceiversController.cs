@@ -58,7 +58,8 @@ namespace DFF.Controllers
                 db.MatchUp.Add(new MatchUp() { DonationID = donationId, ReceiverID = recieverdataMathces[0].ReceiverID });
                 db.SaveChanges();
 
-                return RedirectToAction("", "Donations");
+                //ViewBag.SuccessMsg = "Request Sent Successfully";
+                return View("RequestSuccess");
             }
 
             return View(receiverData);
