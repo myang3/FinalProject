@@ -5,27 +5,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="~/Content/Style.css" rel="stylesheet" type="text/css"/> @*//specified type for older IE versions, otherwise will not show on those browsers*@ 
-@*@RenderSection("css", false)*@
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" /> @*//specified type for older IE versions, otherwise will not show on those browsers*@
+    @*@RenderSection("css", false)*@
     @*@section css {
-        <link href="@Url.Content("~/css/special_style.css")" rel="stylesheet" />
-    }*@ @*//redefining special section*@
-    
-</head>
+            <link href="@Url.Content("~/css/special_style.css")" rel="stylesheet" />
+        }*@ @*//redefining special section*@
 
-<body>
-    
-    <div id="instructions" class="paper">
+    </head>
 
-        <h2>@ViewBag.Title DFF</h2>
-        <h3>@ViewBag.Message</h3>
+    <body>
+
+        <div id="instructions" class="paper">
+
+            <h2>@ViewBag.Title DFF</h2>
+            <h3>@ViewBag.Message</h3>
 
 
-        <p class="formnote"><b>VISION:</b> A group of Developers noticed that after a business luncheon, the leftover food was simply thrown into the trash. This caused a heated debate that this was just wrong. One Developer proposed a challenge.Why not have an App to match companies that have leftover food from functions with organizations and individuals in need.</p>
+            <p class="formnote"><b>VISION:</b> A group of Developers noticed that after a business luncheon, the leftover food was simply thrown into the trash. This caused a heated debate that this was just wrong. One Developer proposed a challenge.Why not have an App to match companies that have leftover food from functions with organizations and individuals in need.</p>
 
-        <p class="formnote"><b>MISSION:</b> To Reduce Food Waste.</p>
+            <p class="formnote"><b>MISSION:</b> To Reduce Food Waste.</p>
 
-        <p class="formnote"><b>BOTTOM LINE:</b> Food doesn't have to go into the Trash Bin!</p>
-    </div>​
-</body>
+            <p class="formnote"><b>BOTTOM LINE:</b> Food doesn't have to go into the Trash Bin!</p>
+
+<br />
+<h3>FAQ</h3>
+   
+            <b>What is Detroit Food Finder?</b>
+            <br />
+            <i>Detroit Food Finder (DFF) is a service that matches business and corporations with excess food from organizational functions doing business in the
+       Detroit Downtown area with individuals and organizations that have a need for the donation.</i>
+            <br /><br />
+            <b>How do I donate to Detroit Food Finder?</b>
+            <br />
+            <i>The donor must first register with DFF before they can donate. Organizations interested in donating thru DFF should login in on the home page at
+       www.DetroitFoodFinder.net. Click on the Donate Button and go to the Donation Page. Fill in the Donation Page and click on the submit button.</i>
+            <br /><br />
+            <b>How do I get a donation from Detroit Food Finder?</b>
+            <br />
+            <i>The receipent must first register with DFF before they can receive a donation. Organizations with an interest in using DFF Matchup service should
+       login on the homepage www.DetroitFoodFinder. Click on the Post Donation button and proceed to the  Donations homepage. Select a donation under the
+       Make a Request column. The Request Form panel will display. Enter the requested information and  click on the Confirm button. You will receive an
+       email with the concact information.</i>
+            <br /><br />
+            <b>How many times can I sign up to get a donation?</b>
+            <br />
+            <i>There are no limits on how many times a Receipients can sign up to receive donations .</i>
+            <br /><br />
+            <b>How do I cancel my donation?</b>
+            <br />
+            <i>The donor will receive an email to confirm their donation. The email contains a link to remove a posted donation.</i>
+            <br /><br />
+            <b>Does the donor organization get to choose what organization receives their donation?</b>
+            <br />
+            <i>The doner has the option to choose which organization or individual receives the donation. The donor also has the option to select one of the listed
+       charities to receive their donation.</i>
+            <br /><br />
+            <b>Can a group of receivers combine to receive a donation?</b>
+            <br />
+            <i>Yes receivers can combine to make a donation request as a group.</i>
+        </div>
+    </body>
 </html>
