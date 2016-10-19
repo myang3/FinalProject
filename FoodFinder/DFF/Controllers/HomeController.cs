@@ -7,6 +7,9 @@ using DFF.Models;
 using System.Data.Entity;
 using RestSharp;
 using RestSharp.Authenticators;
+using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net;
 
 namespace DFF.Controllers
 {
@@ -25,7 +28,6 @@ namespace DFF.Controllers
             ViewBag.Message = "Our Overall Mission Statement";
 
 
-            SendSimpleMessage("darius777hunter@gmail.com","dariushunter777@gmail.com","What up my homie");
 
 
             return View();
@@ -38,25 +40,50 @@ namespace DFF.Controllers
             return View();
         }
 
-        public static RestResponse SendSimpleMessage(string fromReceiverEmail, string toDonorEmail, string inputText)
+        //--------------Email using SMTP client and gmail-----------------------------------
+        //-------------- must use a post method to send---------
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Contact(EmailFormModel model)
         {
-            RestClient client = new RestClient();
-            client.BaseUrl = new Uri("https://api.mailgun.net/v3");
-            client.Authenticator =
-                    new HttpBasicAuthenticator("api",
-                                               "5e4f923c3a968c8e088848485828c182");
-            RestRequest request = new RestRequest();
-            request.AddParameter("domain",
-                                 "https://localhost:44317", ParameterType.UrlSegment);
-            request.Resource = "{domain}/messages";
-            request.AddParameter("from", "Excited User <mailgun@YOUR_DOMAIN_NAME>");
-            request.AddParameter("to", toDonorEmail);
-            request.AddParameter("bcc", "dhunter18@hawkmail.hfcc.edu");
-            request.AddParameter("subject", "Someone wants your Donation");
-            request.AddParameter("text", inputText);
-            request.Method = Method.POST;
-            return (RestResponse)client.Execute(request);
+            if (ModelState.IsValid)
+            {
+                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                var message = new MailMessage();
+
+                message.To.Add(new MailAddress("dariushunter777@gmail.com"));  // replace with valid value 
+                message.To.Add(new MailAddress("darius777hunter@gmail.com"));  // replace with valid value 
+                message.To.Add(new MailAddress("dragonpride777@gmail.com"));  // replace with valid value 
+                message.From = new MailAddress("DetroitFoodFinders@DFF.com");  // replace with valid value
+                message.Subject = "It works";
+                message.Body = "We win";
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "detroitfoodfinders@gmail.com",  // replace with valid value
+                        Password = "foodfinder1234"  // replace with valid value
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    await smtp.SendMailAsync(message);
+                    return RedirectToAction("Sent");
+                }
+            }
+            return View(model);
         }
+        public ActionResult Sent()
+        {
+            ViewBag.Message = "Email works. Fix and modify now";
+
+            return View();
+        }
+
 
     }
 }
