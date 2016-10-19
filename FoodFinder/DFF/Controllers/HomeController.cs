@@ -47,17 +47,15 @@ namespace DFF.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Contact(EmailFormModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                var name = Request["name"].ToString();
+                var Email = Request["toemail"].ToString();
+                var body = Request["comments"].ToString();
                 var message = new MailMessage();
 
-                message.To.Add(new MailAddress("dariushunter777@gmail.com"));  // replace with valid value 
-                message.To.Add(new MailAddress("darius777hunter@gmail.com"));  // replace with valid value 
-                message.To.Add(new MailAddress("dragonpride777@gmail.com"));  // replace with valid value 
-                message.From = new MailAddress("DetroitFoodFinders@DFF.com");  // replace with valid value
-                message.Subject = "It works";
-                message.Body = "We win";
+                message.To.Add(new MailAddress("DetroitFoodFinders@gmail.com"));  // replace with valid value 
+                message.From = new MailAddress( Email);  // replace with valid value
+                message.Subject = $"{name} sends Comments about site";
+                message.Body = body;
                 message.IsBodyHtml = true;
 
                 using (var smtp = new SmtpClient())
@@ -74,12 +72,11 @@ namespace DFF.Controllers
                     await smtp.SendMailAsync(message);
                     return RedirectToAction("Sent");
                 }
-            }
-            return View(model);
+           
         }
         public ActionResult Sent()
         {
-            ViewBag.Message = "Email works. Fix and modify now";
+            ViewBag.Message = "We value all comments and concerns";
 
             return View();
         }

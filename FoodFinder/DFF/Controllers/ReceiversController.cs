@@ -47,7 +47,7 @@ namespace DFF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReceiverID,Name,Email,Phone")] ReceiverData receiverData, int donationId)
+        public ActionResult Create([Bind(Include = "ReceiverID,Name,Email,Phone")] ReceiverData receiverData, int donationId, string d)
         {
             if (ModelState.IsValid)
             {
@@ -55,8 +55,12 @@ namespace DFF.Controllers
                 db.SaveChanges();
 
                 List< ReceiverData >recieverdataMathces = db.ReceiverData.Where(r => r.Email == receiverData.Email && r.Name == receiverData.Name && r.Phone == receiverData.Phone).OrderByDescending(r => r.ReceiverID).ToList();
-                db.MatchUp.Add(new MatchUp() { DonationID = donationId, ReceiverID = recieverdataMathces[0].ReceiverID });
+                db.MatchUp.Add(new MatchUp() {DonationID = donationId, ReceiverID = recieverdataMathces[0].ReceiverID });
                 db.SaveChanges();
+                DonationData done = new DonationData();
+                done.DonationID = donationId;
+                DonationData data = db.DonationData.Where(r => r.DonationID == donationId).Single();
+                string toSendEmailToDatabaseDonor = data.Email;
 
                 return RedirectToAction("", "Donations");
             }

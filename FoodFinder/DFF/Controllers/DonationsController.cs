@@ -21,6 +21,7 @@ namespace DFF.Controllers
         // GET: DonationDatas
         public ActionResult Index()
         {
+            db.MatchUp.ToList();
             return View(db.DonationData.ToList());
         }
 
@@ -139,34 +140,40 @@ namespace DFF.Controllers
         {
             if (ModelState.IsValid)
             {
-                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-                var message = new MailMessage();
+                var body = "This is a test";
+                var sendTo = "dariushunter777@gmail.com";
 
-                message.To.Add(new MailAddress("dariushunter777@gmail.com"));  // replace with valid value 
-                message.To.Add(new MailAddress("darius777hunter@gmail.com"));  // replace with valid value 
-                message.To.Add(new MailAddress("dragonpride777@gmail.com"));  // replace with valid value 
-                message.From = new MailAddress("DetroitFoodFinders@DFF.com");  // replace with valid value
-                message.Subject = "yesssssssss";
-                message.Body = "This is the 'zz app and port 587' for the win to my companions";
-                message.IsBodyHtml = true;
+                await RequsetToDonor(sendTo, "from email", body );
+                return RedirectToAction("Sent");
 
-                using (var smtp = new SmtpClient())
-                {
-                    var credential = new NetworkCredential
-                    {
-                        UserName = "detroitfoodfinders@gmail.com",  // replace with valid value
-                        Password = "foodfinder1234"  // replace with valid value
-                    };
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    await smtp.SendMailAsync(message);
-                    return RedirectToAction("Sent");
-                }
             }
             return View(model);
         }
 
+        private static async Task RequsetToDonor(string toEmail, string fromEmail,string body)
+        {
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(toEmail));  // replace with valid value 
+            message.From = new MailAddress(fromEmail);  // replace with valid value
+            message.Subject = "Comments about the site";
+            message.Body = body;
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "detroitfoodfinders@gmail.com",  // replace with valid value
+                    Password = "foodfinder1234"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+            }
+        }
     }
+
 }
+
