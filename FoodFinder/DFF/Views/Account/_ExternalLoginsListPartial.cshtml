@@ -1,8 +1,8 @@
 ﻿@model DFF.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4>Use another service to log in.</h4>
-<hr />
+<label>Log in with:</label>
+
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0) {
@@ -37,7 +37,7 @@
                             faClass = "fa-windows";
                         }
 
-                        <button type="submit" class="btn btn-lg @buttonClass" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" aria-label="@p.Caption" title="Log in using your @p.Caption account.">
+                        <button type="submit" class="btn-group-justified @buttonClass" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" aria-label="@p.Caption" title="Log in using your @p.Caption account.">
                             <i class="fa @faClass"></i>
                             @p.AuthenticationType
                         </button>

@@ -11,8 +11,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-       
+    <div class="form-horizontal">     
 
         @*<hr /> thematic break, creates a horizontal line*@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -81,11 +80,21 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <div class="col-md-offset-2 col-md-8">
                                     <input type="submit" value="Confrim" class="btn btn-default" />
                                 </div>
-                            </div>
+                            </div>*@
+
+                            <address>
+                                Gleaners Community Food Bank of Southeastern Michigan  <br />
+                                Website: <a href=http://www.gcfb.org>www.gcfb.org</a><br />
+                                Email: <a href="mailto:siteadmin@gcfb.org">siteadmin@gcfb.org</a><br />
+                                2131 Beaufait<br />
+                                Detroit, MI 48207<br />
+                                866-GLEANER (453-2637)
+                            </address>
+
 
                             <div>
                                 @Html.ActionLink("Back to List", "Index")
