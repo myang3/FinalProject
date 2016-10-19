@@ -49,7 +49,11 @@ namespace DFF.Models
         [Required]
         [Display(Name = "Pickup Time")]
         public string PickupTime { get; set; }
+
+        [Display(Name = "Expire Tme")]
         public string ExpireTime { get; set; }
+
+        [Display(Name = "Short Description")]
         public string shortDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
