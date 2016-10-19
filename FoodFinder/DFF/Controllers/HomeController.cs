@@ -16,7 +16,7 @@ namespace DFF.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Our Overall Mission Statement";
+            ViewBag.Message = "Who We Are";
             
 
             return View();
@@ -24,7 +24,23 @@ namespace DFF.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "How You Can Reach Us";
+            ViewBag.Message = "Contact Us";
+
+            return View();
+        }
+
+        public ActionResult Faq()
+        {
+            ViewBag.Message = "Questions ";
+
+
+            return View();
+        }
+
+        public ActionResult Help()
+        {
+            ViewBag.Message = "Find Out More ";
+
 
             return View();
         }

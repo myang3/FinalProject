@@ -1,0 +1,5 @@
+C:\Users\SysAdmin\Documents\GitHub\FinalProject\DFFProject\DatabaseDFF\bin\Debug\DatabaseDFF.dacpac
+C:\Users\SysAdmin\Documents\GitHub\FinalProject\DFFProject\DatabaseDFF\bin\Debug\DatabaseDFF.dll
+C:\Users\SysAdmin\Documents\GitHub\FinalProject\DFFProject\DatabaseDFF\bin\Debug\DatabaseDFF.pdb
+C:\Users\SysAdmin\Documents\GitHub\FinalProject\DFFProject\DatabaseDFF\obj\Debug\DatabaseDFF.dll
+C:\Users\SysAdmin\Documents\GitHub\FinalProject\DFFProject\DatabaseDFF\obj\Debug\DatabaseDFF.pdb

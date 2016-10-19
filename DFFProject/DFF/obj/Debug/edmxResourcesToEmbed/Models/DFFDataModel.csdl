@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DFFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DonationData">
+    <Key>
+      <PropertyRef Name="DonationID" />
+    </Key>
+    <Property Name="DonationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FoodType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PickupDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PickupTime" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="MatchUp" Relationship="Self.FK_MatchUp_DonationData" FromRole="DonationData" ToRole="MatchUp" />
+  </EntityType>
+  <EntityType Name="MatchUp">
+    <Key>
+      <PropertyRef Name="MatchID" />
+    </Key>
+    <Property Name="MatchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DonationID" Type="Int32" Nullable="false" />
+    <Property Name="ReceiverID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DonationData" Relationship="Self.FK_MatchUp_DonationData" FromRole="MatchUp" ToRole="DonationData" />
+    <NavigationProperty Name="ReceiverData" Relationship="Self.FK_MatchUp_ReceiverData" FromRole="MatchUp" ToRole="ReceiverData" />
+  </EntityType>
+  <EntityType Name="ReceiverData">
+    <Key>
+      <PropertyRef Name="ReceiverID" />
+    </Key>
+    <Property Name="ReceiverID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MatchUp" Relationship="Self.FK_MatchUp_ReceiverData" FromRole="ReceiverData" ToRole="MatchUp" />
+  </EntityType>
+  <Association Name="FK_MatchUp_DonationData">
+    <End Role="DonationData" Type="Self.DonationData" Multiplicity="1" />
+    <End Role="MatchUp" Type="Self.MatchUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonationData">
+        <PropertyRef Name="DonationID" />
+      </Principal>
+      <Dependent Role="MatchUp">
+        <PropertyRef Name="DonationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MatchUp_ReceiverData">
+    <End Role="ReceiverData" Type="Self.ReceiverData" Multiplicity="1" />
+    <End Role="MatchUp" Type="Self.MatchUp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReceiverData">
+        <PropertyRef Name="ReceiverID" />
+      </Principal>
+      <Dependent Role="MatchUp">
+        <PropertyRef Name="ReceiverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DFFEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DonationData" EntityType="Self.DonationData" />
+    <EntitySet Name="MatchUp" EntityType="Self.MatchUp" />
+    <EntitySet Name="ReceiverData" EntityType="Self.ReceiverData" />
+    <AssociationSet Name="FK_MatchUp_DonationData" Association="Self.FK_MatchUp_DonationData">
+      <End Role="DonationData" EntitySet="DonationData" />
+      <End Role="MatchUp" EntitySet="MatchUp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MatchUp_ReceiverData" Association="Self.FK_MatchUp_ReceiverData">
+      <End Role="ReceiverData" EntitySet="ReceiverData" />
+      <End Role="MatchUp" EntitySet="MatchUp" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
