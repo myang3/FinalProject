@@ -52,7 +52,8 @@ namespace DFF.Controllers
             {
                 db.DonationData.Add(donationData);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return View("DonationSuccess");
             }
 
             return View(donationData);
