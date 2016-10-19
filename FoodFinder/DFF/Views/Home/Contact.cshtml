@@ -1,21 +1,35 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title Us</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    Detroit Food Finder<br />
-    Suite 420
-    Detroit, MI.  48226<br />
-    <abbr title="Phone">P:</abbr>
-    313.338.5555
-</address>
-<address>
-    Office Hours: 9:00am - 6:00pm EST <br />
-</address>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
+</head>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:DFSupport@DFFinder.com">DFSupport@DFFinder.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:DFMarketing@DFFinder.com">DFMarketing@DFFinder.com</a>
-</address>
+<body>
+
+    <div id="instructions" class="paper">
+
+        <h2>@ViewBag.Title Us</h2>
+        <h3>@ViewBag.Message</h3>
+
+        <address>
+            Detroit Food Finder<br />
+            Suite 420
+            Detroit, MI.  48226<br />
+            <abbr title="Phone">P:</abbr>
+            313.338.5555
+        </address>
+        <address>
+            Office Hours: 9:00am - 6:00pm EST <br />
+        </address>
+
+        <address>
+            <strong>Support:</strong>   <a href="mailto:DFSupport@DFFinder.com">DFSupport@DFFinder.com</a><br />
+            <strong>Marketing:</strong> <a href="mailto:DFMarketing@DFFinder.com">DFMarketing@DFFinder.com</a>
+        </address>
+    </div>
+</body>
+</html>

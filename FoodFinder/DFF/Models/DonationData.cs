@@ -35,12 +35,19 @@ namespace DFF.Models
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]        
         public string Phone { get; set; }
 
+        [Required(ErrorMessage = "Please describe your donation")]
+        [Display(Name = "Food Type")]
         public string FoodType { get; set; }
+
         [Required(ErrorMessage = "Please enter a Location")]
         public string Location { get; set; }
+
+        [Display(Name = "Pickup Date")]
         [Required(ErrorMessage = "Please enter a Date")]
         public string PickupDate { get; set; }
+
         [Required]
+        [Display(Name = "Pickup Time")]
         public string PickupTime { get; set; }
         public string ExpireTime { get; set; }
         public string shortDescription { get; set; }

@@ -2,59 +2,69 @@
 @using DFF.Models
 @{
     ViewBag.Title = "Create";
-    var  donationdata = (DonationData)ViewBag.donationdata;
+    var donationdata = (DonationData)ViewBag.donationdata;
 }
 
-<h2>Food Request Form</h2>
+<body style="background-color:rgb(235, 235, 235)">
+    @*<div class="jumbotron" style="background: url(https://static.pexels.com/photos/5876/food-salad-healthy-vegetables.jpg); background-size: cover" ;>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+        <div class="col-md-12" style="background-color:rgba(235, 235, 235, 0.90); padding-top:25px; padding-bottom:25px; position:center;">
+        <img src="https://lh3.googleusercontent.com/-YwF_fZkUjjg/WAUU3leTeAI/AAAAAAAAAfc/doPXci_WnT4sxydnVo5ujniKaal9P8aMgCL0B/w795-d-h398-p-rw/logo2.png" alt="DFF Logo" style="width:280px;height:140px;">*@
 
-    <div class="form-horizontal">
-        <h4>
-            Please Enter Your Information
-        </h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    <h2 style="margin-top:25px;">Food Request Form</h2>
+
+
+    @using (Html.BeginForm())
+            {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>
+                Please Enter Your Information
+            </h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Confirm" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="submit" value="Confirm" class="btn-linkedin" />
+                </div>
             </div>
+            <input class="hidden " name="donationId" value="@donationdata.DonationID" />
         </div>
-        <input class="hidden "name="donationId" value="@donationdata.DonationID" />
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "", "Donations")
     </div>
-}
+    @*</div>
+    </div>*@
+</body>
 
-<div>
-    @Html.ActionLink("Back to List", "", "Donations")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

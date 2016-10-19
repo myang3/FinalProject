@@ -4,71 +4,92 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Donations</h2>
+@*<link href="@Url.Content("~/Content/GraphPaperDesign.css")" rel="stylesheet" type="text/css" />*@
+@*@Styles.Render("~/Content/GraphPaperDesign.css")
+    @Scripts.Render("~/bundles/modernizr")*@
+@*<link href="~/Content/GraphPaperDesign.css" rel="stylesheet" type="text/css"*@
 
-<p>
-    @Html.ActionLink("Make a Donation", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FoodType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PickupDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PickupTime)
-        </th>
-        <th>
-            Make a Request
-        </th>
-    </tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
+</head>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FoodType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PickupDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PickupTime)
-        </td>
-        <td>
-            @Html.ActionLink("I want this!", "Create", "Receivers", new { @id = item.DonationID },null)
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DonationID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DonationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DonationID })
-        </td>*@
-    </tr>
-}
+<body>
 
-</table>
+    <div id="instructions" class="paper" style="margin-left:15px;">
+        <h2>Donations</h2>
+
+        <p>
+            @Html.ActionLink("Make a Donation", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoodType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PickupTime)
+                </th>
+                <th>               
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FoodType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PickupDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PickupTime)
+                    </td>
+                    <td style="white-space:nowrap;">
+                        @Html.ActionLink("Claim It!", "Create", "Receivers", new { @id = item.DonationID , @style = "margin-left:-15px" }, null)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.DonationID }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.DonationID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.DonationID })
+                        </td>*@
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>
+
+@*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@

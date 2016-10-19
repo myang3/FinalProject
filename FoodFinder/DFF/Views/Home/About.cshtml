@@ -1,11 +1,31 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "About"; /*ViewBag is used to share values from the controller to the view*/
 }
-<h2>@ViewBag.Title DFF</h2>
-<h3>@ViewBag.Message</h3>
 
-<p class="formnote"><b>VISION:</b> A group of Developers noticed that after a business luncheon, the leftover food was simply thrown into the trash. This caused a heated debate that this was just wrong. One Developer proposed a challenge.Why not have an App to match companies that have leftover food from functions with organizations and individuals in need.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css"/> @*//specified type for older IE versions, otherwise will not show on those browsers*@ 
+@*@RenderSection("css", false)*@
+    @*@section css {
+        <link href="@Url.Content("~/css/special_style.css")" rel="stylesheet" />
+    }*@ @*//redefining special section*@
+    
+</head>
 
-<p class="formnote" ><b>MISSION:</b> To Reduce Food Waste.</p>
+<body>
+    
+    <div id="instructions" class="paper">
 
-<p class="formnote" ><b>BOTTOM LINE:</b> Food doesn't have to go into the Trash Bin!</p>
+        <h2>@ViewBag.Title DFF</h2>
+        <h3>@ViewBag.Message</h3>
+
+
+        <p class="formnote"><b>VISION:</b> A group of Developers noticed that after a business luncheon, the leftover food was simply thrown into the trash. This caused a heated debate that this was just wrong. One Developer proposed a challenge.Why not have an App to match companies that have leftover food from functions with organizations and individuals in need.</p>
+
+        <p class="formnote"><b>MISSION:</b> To Reduce Food Waste.</p>
+
+        <p class="formnote"><b>BOTTOM LINE:</b> Food doesn't have to go into the Trash Bin!</p>
+    </div>​
+</body>
+</html>

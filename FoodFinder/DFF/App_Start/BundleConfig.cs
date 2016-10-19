@@ -27,7 +27,9 @@ namespace DFF
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/justified-nav.css",
-                      "~/Content/bootstrap-social.css"));
+                      "~/Content/bootstrap-social.css",
+                      "~/Content/GraphPaperDesign.css"
+                      ));
         }
     }
 }
