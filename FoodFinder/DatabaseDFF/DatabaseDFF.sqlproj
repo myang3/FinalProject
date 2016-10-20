@@ -65,4 +65,7 @@
     <Build Include="dbo\Tables\MatchUp.sql" />
     <Build Include="dbo\Tables\DonationData.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DatabaseDFF.publish.xml" />
+  </ItemGroup>
 </Project>

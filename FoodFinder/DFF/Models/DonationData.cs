@@ -11,8 +11,7 @@ namespace DFF.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class DonationData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,26 +21,16 @@ namespace DFF.Models
         }
     
         public int DonationID { get; set; }
-
-        [Required, StringLength(60, MinimumLength = 3)]
         public string Name { get; set; }
-
-        [Required, RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         public string Email { get; set; }
-
-        [Required(ErrorMessage = "Phone Number Required!")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid. Ex: 313-223-1122")]
         public string Phone { get; set; }
-
         public string FoodType { get; set; }
-        [Required(ErrorMessage = "Please enter a Location")]
         public string Location { get; set; }
-        [Required(ErrorMessage = "Please enter a Date")]
         public string PickupDate { get; set; }
-        [Required]
         public string PickupTime { get; set; }
-        public string ExpireTime { get; set; }
         public string shortDescription { get; set; }
+        public string ExpireTime { get; set; }
+        public string Flag { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatchUp> MatchUp { get; set; }

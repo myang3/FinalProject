@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DFF.Models;
+using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace DFF.Controllers
 {
@@ -47,20 +49,30 @@ namespace DFF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReceiverID,Name,Email,Phone")] ReceiverData receiverData, int donationId, string d)
+        public async Task<ActionResult> Create([Bind(Include = "ReceiverID,Name,Email,Phone")] ReceiverData receiverData, int donationId, string d)
         {
             if (ModelState.IsValid)
             {
                 db.ReceiverData.Add(receiverData);
                 db.SaveChanges();
 
-                List< ReceiverData >recieverdataMathces = db.ReceiverData.Where(r => r.Email == receiverData.Email && r.Name == receiverData.Name && r.Phone == receiverData.Phone).OrderByDescending(r => r.ReceiverID).ToList();
-                db.MatchUp.Add(new MatchUp() {DonationID = donationId, ReceiverID = recieverdataMathces[0].ReceiverID });
+                List<ReceiverData> recieverdataMathces = db.ReceiverData.Where(r => r.Email == receiverData.Email && r.Name == receiverData.Name && r.Phone == receiverData.Phone).OrderByDescending(r => r.ReceiverID).ToList();
+                db.MatchUp.Add(new MatchUp() { DonationID = donationId, ReceiverID = recieverdataMathces[0].ReceiverID });
                 db.SaveChanges();
                 DonationData done = new DonationData();
                 done.DonationID = donationId;
                 DonationData data = db.DonationData.Where(r => r.DonationID == donationId).Single();
-                string toSendEmailToDatabaseDonor = data.Email;
+
+                //--------------  full url----------
+                var fullURL = this.Url.Action("edit", "donations", new { id = donationId }, this.Request.Url.Scheme);
+
+                var body = $"Hello {data.Name}<br />, a user is interested in your donation. Here is the contact info:<br/> {receiverData.Name}<br />{receiverData.Phone}<br />{receiverData.Email}.<br /><br /> Please flag post after it is picked up by following thie link <br />{fullURL}.";
+                var sendTo = data.Email;
+
+                await RequsetToDonor(sendTo, "DetroitFoodFinders@dff.com", body);
+               // return RedirectToAction("Sent");
+
+
 
                 return RedirectToAction("", "Donations");
             }
@@ -132,6 +144,31 @@ namespace DFF.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        private static async Task RequsetToDonor(string toEmail, string fromEmail, string body)
+        {
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(toEmail));  // replace with valid value 
+            message.From = new MailAddress(fromEmail);  // replace with valid value
+            message.Subject = "Comments about the site";
+            message.Body = body;
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "detroitfoodfinders@gmail.com",  // replace with valid value
+                    Password = "foodfinder1234"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+            }
         }
     }
 }

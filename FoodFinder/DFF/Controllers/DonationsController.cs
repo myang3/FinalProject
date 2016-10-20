@@ -51,12 +51,25 @@ namespace DFF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DonationID,Name,Email,Phone,FoodType,Location,PickupDate,PickupTime")] DonationData donationData)
+        public async Task<ActionResult> Create([Bind(Include = "DonationID,Name,Email,Phone,FoodType,Location,PickupDate,PickupTime")] DonationData donationData)
         {
             if (ModelState.IsValid)
             {
+
+
                 db.DonationData.Add(donationData);
                 db.SaveChanges();
+
+//----------------------------- Sending email to donor with the edit link---------------------------------------
+                int donationId = donationData.DonationID;
+
+                var fullURL = this.Url.Action("edit", "donations", new { id = donationId }, this.Request.Url.Scheme);
+
+                var body = $"Hello {donationData.Name},<br /><br /> Thank you for your donation. Here is the link to edit and/or remove your post.<br />{fullURL} <br/>Please remember to flag your post after it is picked up by selecting the flag button.";
+                var sendTo = donationData.Email;
+
+                await RequsetToDonor(sendTo, "DetroitFoodFinders@dff.com", body);
+
                 return RedirectToAction("Index");
             }
 
@@ -134,23 +147,7 @@ namespace DFF.Controllers
         //--------------Email using SMTP client and gmail-----------------------------------
         //-------------- must use a post method to send---------
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Contact(EmailFormModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var body = "This is a test";
-                var sendTo = "dariushunter777@gmail.com";
-
-                await RequsetToDonor(sendTo, "from email", body );
-                return RedirectToAction("Sent");
-
-            }
-            return View(model);
-        }
-
-        private static async Task RequsetToDonor(string toEmail, string fromEmail,string body)
+                private static async Task RequsetToDonor(string toEmail, string fromEmail,string body)
         {
             var message = new MailMessage();
             message.To.Add(new MailAddress(toEmail));  // replace with valid value 
