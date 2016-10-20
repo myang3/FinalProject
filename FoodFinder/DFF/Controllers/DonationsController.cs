@@ -205,7 +205,7 @@ namespace DFF.Controllers
             var message = new MailMessage();
             message.To.Add(new MailAddress(toEmail));  // replace with valid value 
             message.From = new MailAddress(fromEmail);  // replace with valid value
-            message.Subject = "Comments about the site";
+            message.Subject = "Thanks For the Donation!";
             message.Body = body;
             message.IsBodyHtml = true;
 
