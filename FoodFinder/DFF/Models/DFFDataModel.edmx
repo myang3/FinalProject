@@ -13,12 +13,13 @@
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="FoodType" Type="nvarchar(max)" />
+          <Property Name="FoodType" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PickupDate" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PickupTime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="shortDescription" Type="text" />
           <Property Name="ExpireTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="MatchUp">
           <Key>
@@ -86,13 +87,14 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FoodType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FoodType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PickupDate" Type="String" Unicode="true" FixedLength="false" MaxLength="50" Nullable="false" />
           <Property Name="PickupTime" Type="String" MaxLength="50" Nullable="false" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="MatchUp" Relationship="Self.FK_MatchUp_DonationData" FromRole="DonationData" ToRole="MatchUp" />
           <Property Name="shortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ExpireTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Flag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MatchUp">
           <Key>
@@ -160,7 +162,8 @@
     <EntitySetMapping Name="DonationData">
       <EntityTypeMapping TypeName="IsTypeOf(DFFModel.DonationData)">
         <MappingFragment StoreEntitySet="DonationData">
-          <ScalarProperty Name="ExpireTime" ColumnName="ExpireTime" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="ExpireTime" ColumnName="ExpireTime" />
                 <ScalarProperty Name="DonationID" ColumnName="DonationID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />

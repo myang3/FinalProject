@@ -19,7 +19,9 @@ namespace DFF.Controllers
         // GET: DonationDatas
         public ActionResult Index()
         {
-            return View(db.DonationData.ToList());
+            var results = db.DonationData.Where(d => d.Flag != "inactive").ToList();
+
+            return View(results);
         }
 
         // GET: DonationDatas/Details/5

@@ -10,9 +10,9 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>DonationData</h4>
+        <h4>Donation Information</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.DonationID)
@@ -94,7 +94,20 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
-    </div>
+</div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.EditorFor(model => model.Flag, new { htmlAttributes = new { @class = "hidden", @value = "inactive", @id="flag" } })
+
+                <input type="submit" value="Flag for Removal" class="btn btn-default" id="flag" />
+            </div>
+        </div>
+    
 }
 
 <div>

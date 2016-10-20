@@ -35,6 +35,7 @@ namespace DFF.Models
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
         public string Phone { get; set; }
 
+        [MaxLength(35, ErrorMessage = "Please keep it short, 35 characters")]
         [Required(ErrorMessage = "Please describe your donation")]
         [Display(Name = "Food Type")]
         public string FoodType { get; set; }
@@ -55,6 +56,8 @@ namespace DFF.Models
 
         [Display(Name = "Short Description")]
         public string shortDescription { get; set; }
+
+        public string Flag { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatchUp> MatchUp { get; set; }
