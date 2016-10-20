@@ -4,86 +4,98 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
+</head>
 
-<div>
-    <h4>DonationData</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<body>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <div id="instructions" class="paper" style="padding-bottom:200px;">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+        <h2>Donation Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FoodType)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FoodType)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FoodType)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PickupDate)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FoodType)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PickupDate)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Location)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PickupTime)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Location)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PickupTime)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PickupDate)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ExpireTime)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PickupDate)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ExpireTime)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PickupTime)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.shortDescription)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PickupTime)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.shortDescription)
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index") @*| @Html.ActionLink("I want this!", "Create", "Receivers")*@
-    @*@Html.ActionLink("I want this!", "Create", "Receivers", new { @id = item.DonationID }, null)*@
-</p>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExpireTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExpireTime)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.shortDescription)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.shortDescription)
+                </dd>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Back to List", "Index") @*| @Html.ActionLink("I want this!", "Create", "Receivers")*@
+            @*@Html.ActionLink("I want this!", "Create", "Receivers", new { @id = item.DonationID }, null)*@
+        </p>
+    </div>
+</body>
+</html>
