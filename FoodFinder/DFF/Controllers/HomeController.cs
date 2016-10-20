@@ -17,7 +17,6 @@ namespace DFF.Controllers
     {
         DFFEntities1 dff = new DFFEntities1();
 
-
         public ActionResult Index()
         {
             return View();
@@ -27,16 +26,12 @@ namespace DFF.Controllers
         {
             ViewBag.Message = "Our Overall Mission Statement";
 
-
-
-
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "How You Can Reach Us";
-
             return View();
         }
 
@@ -47,43 +42,38 @@ namespace DFF.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Contact(EmailFormModel model)
         {
-            if (ModelState.IsValid)
+            //var name = Request["name"].ToString();
+            //var Email = Request["toemail"].ToString();
+            //var body = Request["comments"].ToString();
+            //var message = new MailMessage();
+            var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+            var message = new MailMessage();
+
+            message.To.Add(new MailAddress("DetroitFoodFinders@gmail.com"));  // replace with valid value 
+            message.From = new MailAddress("DetroitFoodFinders@DFF.com");  // replace with valid value
+            message.Subject = "Comments about site";
+            message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
+            message.IsBodyHtml = true;
+            using (var smtp = new SmtpClient())
             {
-                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-                var message = new MailMessage();
-
-                message.To.Add(new MailAddress("dariushunter777@gmail.com"));  // replace with valid value 
-                message.To.Add(new MailAddress("darius777hunter@gmail.com"));  // replace with valid value 
-                message.To.Add(new MailAddress("dragonpride777@gmail.com"));  // replace with valid value 
-                message.From = new MailAddress("DetroitFoodFinders@DFF.com");  // replace with valid value
-                message.Subject = "It works";
-                message.Body = "We win";
-                message.IsBodyHtml = true;
-
-                using (var smtp = new SmtpClient())
+                var credential = new NetworkCredential
                 {
-                    var credential = new NetworkCredential
-                    {
-                        UserName = "detroitfoodfinders@gmail.com",  // replace with valid value
-                        Password = "foodfinder1234"  // replace with valid value
-                    };
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    await smtp.SendMailAsync(message);
-                    return RedirectToAction("Sent");
-                }
+                    UserName = "detroitfoodfinders@gmail.com",  // replace with valid value
+                    Password = "foodfinder1234"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+                return RedirectToAction("Sent");
             }
-            return View(model);
         }
         public ActionResult Sent()
         {
-            ViewBag.Message = "Email works. Fix and modify now";
+            ViewBag.Message = "We value all comments and concerns";
 
             return View();
         }
-
-
     }
 }

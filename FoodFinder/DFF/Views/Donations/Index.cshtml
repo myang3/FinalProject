@@ -63,7 +63,9 @@
                         @Html.DisplayFor(modelItem => item.ExpireTime)
                     </td>
                     <td style="white-space:nowrap;">
-                        @Html.ActionLink("Details", "Details", new { id = item.DonationID, @style = "margin-left:-15px" }, null)
+                        @Html.ActionLink("Details", "Details", new { id = item.DonationID, @style = "margin-left:-15px" }, null) | 
+                  
+                        @Html.ActionLink("I want this!", "Create", "Receivers", new { @id = item.DonationID }, null)
                     </td>
                     @*<td>
                             @Html.ActionLink("Edit", "Edit", new { id=item.DonationID }) |

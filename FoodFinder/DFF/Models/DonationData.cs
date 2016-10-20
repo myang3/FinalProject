@@ -11,7 +11,7 @@ namespace DFF.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class DonationData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace DFF.Models
         {
             this.MatchUp = new HashSet<MatchUp>();
         }
-    
+
         public int DonationID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -30,7 +30,8 @@ namespace DFF.Models
         public string PickupTime { get; set; }
         public string shortDescription { get; set; }
         public string ExpireTime { get; set; }
-    
+        public string Flag { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatchUp> MatchUp { get; set; }
     }
