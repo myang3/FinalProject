@@ -48,7 +48,7 @@ namespace DFF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DonationID,Name,Email,Phone,FoodType,Location,PickupDate,PickupTime")] DonationData donationData)
+        public ActionResult Create([Bind(Include = "DonationID,Name,Email,Phone,FoodType,Location,PickupDate,PickupTime,ExpireTime,shortDescription")] DonationData donationData)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace DFF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DonationID,Name,Email,Phone,FoodType,Location,PickupDate,PickupTime")] DonationData donationData)
+        public ActionResult Edit([Bind(Include = "DonationID,Name,Email,Phone,FoodType,Location,PickupDate,PickupTime,ExpireTime,shortDescription")] DonationData donationData)
         {
             if (ModelState.IsValid)
             {

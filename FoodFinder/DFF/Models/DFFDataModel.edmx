@@ -4,76 +4,77 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DFFModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="DFFModelStoreContainer">
-    <EntitySet Name="DonationData" EntityType="DFFModel.Store.DonationData" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="MatchUp" EntityType="DFFModel.Store.MatchUp" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ReceiverData" EntityType="DFFModel.Store.ReceiverData" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_MatchUp_DonationData" Association="DFFModel.Store.FK_MatchUp_DonationData">
-      <End Role="DonationData" EntitySet="DonationData" />
-      <End Role="MatchUp" EntitySet="MatchUp" />
-    </AssociationSet>
-    <AssociationSet Name="FK_MatchUp_ReceiverData" Association="DFFModel.Store.FK_MatchUp_ReceiverData">
-      <End Role="ReceiverData" EntitySet="ReceiverData" />
-      <End Role="MatchUp" EntitySet="MatchUp" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="DonationData">
-    <Key>
-      <PropertyRef Name="DonationID" />
-    </Key>
-    <Property Name="DonationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="15" />
-    <Property Name="FoodType" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PickupDate" Type="nvarchar" Nullable="false" MaxLength="10" />
-    <Property Name="PickupTime" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="shortDescription" Type="varchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="MatchUp">
-    <Key>
-      <PropertyRef Name="MatchID" />
-    </Key>
-    <Property Name="MatchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DonationID" Type="int" Nullable="false" />
-    <Property Name="ReceiverID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ReceiverData">
-    <Key>
-      <PropertyRef Name="ReceiverID" />
-    </Key>
-    <Property Name="ReceiverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="15" />
-  </EntityType>
-  <Association Name="FK_MatchUp_DonationData">
-    <End Role="DonationData" Type="DFFModel.Store.DonationData" Multiplicity="1" />
-    <End Role="MatchUp" Type="DFFModel.Store.MatchUp" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DonationData">
-        <PropertyRef Name="DonationID" />
-      </Principal>
-      <Dependent Role="MatchUp">
-        <PropertyRef Name="DonationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_MatchUp_ReceiverData">
-    <End Role="ReceiverData" Type="DFFModel.Store.ReceiverData" Multiplicity="1" />
-    <End Role="MatchUp" Type="DFFModel.Store.MatchUp" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ReceiverData">
-        <PropertyRef Name="ReceiverID" />
-      </Principal>
-      <Dependent Role="MatchUp">
-        <PropertyRef Name="ReceiverID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="DFFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DonationData">
+          <Key>
+            <PropertyRef Name="DonationID" />
+          </Key>
+          <Property Name="DonationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="FoodType" Type="nvarchar(max)" />
+          <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PickupDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PickupTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="shortDescription" Type="text" />
+          <Property Name="ExpireTime" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MatchUp">
+          <Key>
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Name="MatchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DonationID" Type="int" Nullable="false" />
+          <Property Name="ReceiverID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReceiverData">
+          <Key>
+            <PropertyRef Name="ReceiverID" />
+          </Key>
+          <Property Name="ReceiverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MatchUp_DonationData">
+          <End Role="DonationData" Type="Self.DonationData" Multiplicity="1" />
+          <End Role="MatchUp" Type="Self.MatchUp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonationData">
+              <PropertyRef Name="DonationID" />
+            </Principal>
+            <Dependent Role="MatchUp">
+              <PropertyRef Name="DonationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MatchUp_ReceiverData">
+          <End Role="ReceiverData" Type="Self.ReceiverData" Multiplicity="1" />
+          <End Role="MatchUp" Type="Self.MatchUp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiverData">
+              <PropertyRef Name="ReceiverID" />
+            </Principal>
+            <Dependent Role="MatchUp">
+              <PropertyRef Name="ReceiverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DFFModelStoreContainer">
+          <EntitySet Name="DonationData" EntityType="Self.DonationData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MatchUp" EntityType="Self.MatchUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiverData" EntityType="Self.ReceiverData" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MatchUp_DonationData" Association="Self.FK_MatchUp_DonationData">
+            <End Role="DonationData" EntitySet="DonationData" />
+            <End Role="MatchUp" EntitySet="MatchUp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MatchUp_ReceiverData" Association="Self.FK_MatchUp_ReceiverData">
+            <End Role="ReceiverData" EntitySet="ReceiverData" />
+            <End Role="MatchUp" EntitySet="MatchUp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DFFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -87,10 +88,11 @@
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FoodType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PickupDate" Type="String" Unicode="true" FixedLength="false" MaxLength="10" Nullable="false" />
+          <Property Name="PickupDate" Type="String" Unicode="true" FixedLength="false" MaxLength="50" Nullable="false" />
           <Property Name="PickupTime" Type="String" MaxLength="50" Nullable="false" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="MatchUp" Relationship="Self.FK_MatchUp_DonationData" FromRole="DonationData" ToRole="MatchUp" />
           <Property Name="shortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExpireTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MatchUp">
           <Key>
@@ -158,7 +160,8 @@
     <EntitySetMapping Name="DonationData">
       <EntityTypeMapping TypeName="IsTypeOf(DFFModel.DonationData)">
         <MappingFragment StoreEntitySet="DonationData">
-          <ScalarProperty Name="DonationID" ColumnName="DonationID" />
+          <ScalarProperty Name="ExpireTime" ColumnName="ExpireTime" />
+                <ScalarProperty Name="DonationID" ColumnName="DonationID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
