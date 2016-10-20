@@ -97,19 +97,23 @@
 </div>
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+@*@using (Html.BeginForm("SetFlag", "Donations",new { id = model.DonationID }, FormMethod.Post))
+{*@
+
+    <form action="/Donations/SetFlag/@Model.DonationID" method="post">
+        @Html.AntiForgeryToken()
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @Html.EditorFor(model => model.Flag, new { htmlAttributes = new { @class = "hidden", @value = "inactive", @id="flag" } })
+                @Html.EditorFor(model => model.Flag, new { htmlAttributes = new { @class = "hidden", @value = "inactive", @id = "flag" } })
+                @Html.EditorFor(model => model.DonationID, new { htmlAttributes = new { @class = "hidden" } })
+
 
                 <input type="submit" value="Flag for Removal" class="btn btn-default" id="flag" />
             </div>
         </div>
-    
-}
 
+        @*}*@
+    </form>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

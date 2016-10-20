@@ -75,6 +75,24 @@ namespace DFF.Controllers
 
             return View(donationData);
         }
+        [HttpPost]
+        public ActionResult SetFlag(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            DonationData donationData = db.DonationData.Find(id);
+            if (donationData == null)
+            {
+                return HttpNotFound();
+            }
+            donationData.Flag = "inactive";
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
         // GET: DonationDatas/Edit/5
         public ActionResult Edit(int? id)
