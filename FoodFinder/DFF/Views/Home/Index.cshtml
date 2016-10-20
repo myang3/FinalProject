@@ -7,7 +7,23 @@
     ViewBag.Title = "Log in";
 }
 
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '190195124751820',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 <div class="jumbotron" style="background: url(https://static.pexels.com/photos/5876/food-salad-healthy-vegetables.jpg); background-size: cover" ;>
 
     @*<h2>@ViewBag.Title.</h2>*@
