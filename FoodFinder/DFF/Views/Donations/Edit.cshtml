@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:-2px">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
@@ -108,13 +108,13 @@
                 @Html.EditorFor(model => model.DonationID, new { htmlAttributes = new { @class = "hidden" } })
 
 
-                <input type="submit" value="Flag for Removal" class="btn btn-default" id="flag" />
+                <input type="submit" value="Flag for Removal" class="btn btn-default" id="flag"/>
             </div>
         </div>
 
         @*}*@
     </form>
-<div>
+<div class="col-md-offset-2 col-md-10">
     @Html.ActionLink("Back to List", "Index")
 </div>
 
